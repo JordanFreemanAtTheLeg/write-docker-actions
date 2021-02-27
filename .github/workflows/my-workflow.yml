@@ -15,11 +15,12 @@ jobs:
         uses: ./.github/actions/hello-world
 
       - name: meow
+        id: cat
         uses: ./.github/actions/cat-facts
         
       - name: create-issue
         uses: ./.github/actions/issue-maker
         with:
           repoToken: ${{secrets.GITHUB_TOKEN}}
-          catFact: ${{steps.meow.outputs.fact}}
+          catFact: ${{steps.cat.outputs.fact}}
           issueTitle: ${{steps.cat.outputs.fact}}
